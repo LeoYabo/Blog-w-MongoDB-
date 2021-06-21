@@ -1,0 +1,22 @@
+<%-include("partials/header");-%>
+
+ <h1>Home</h1>
+
+<p> <%= homeEntry %> </p>
+
+<div class="entries">
+  <%# blog is passed from app.js which contains the mongo entries. I then put those entries into "foundPost". %>
+  <%blog.forEach(function(foundPost){%>
+  <h2>
+    <%# foundPost.title returns the value of title in that specific document  %>
+    <%= foundPost.title %>
+  </h2>
+  <p class="truncate">
+    <%= foundPost.blog %>
+  </p>
+  <!-- after clicking on "read more" it will redirect user to /post/<_id of post> in post.ejs  -->
+  <a href="/posts/<%= foundPost._id %>"> Read More </a>
+</div>
+<% });%>
+
+<%- include("partials/footer");-%>
